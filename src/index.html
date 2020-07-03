@@ -5,11 +5,14 @@
 </head>
 <body>
   <div class="container">
-    <h2 class="jumbotron">Currency Conversion Program</h2>
+    <div class="jumbotron">
+      <h2 id="title">Currency Conversion Program</h2>
+    </div>
     <div class="row">
       <div id="form-input" class="col-md-6">
         <form id="input">
           <div class="form-group">
+            <br>
             <label for="currency-to-conv">Please set the currency type and amount you are converting</label>
             <select id="currency-to-conv" class="form-control">
               <option value="">Select an option</option>
@@ -77,12 +80,17 @@
             </select>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
+          <br><br>
         </form>
       </div>
       <div id="output" class="col-md-6">
-        <div>
+        <h5>Hello!</h5> 
+        <p>Welcome to my currency converter. Shoutout to Exchange API for providing the conversion rates. To the left I've built a form in which you can select which currency and how much you'd like to convert. Happy Travels!</p>
+        <div id="result">
+          <br>
           <p><span id="display"></span></p>
           <p><span id="error"></span></p>
+          <br>
         </div>
       </div>
     </div>

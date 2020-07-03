@@ -47,6 +47,6 @@ $(document).ready(function() {
     const currencyToMatch = $("#currency-to-match").val();
     const moneyInput = $("#convert-amount").val();
     getConversion(currencyToConv, currencyToMatch, moneyInput);
-    $("#output").fadeIn();
+    $("#result").slideDown();
   });
 });
