@@ -5,7 +5,7 @@ import $ from 'jquery';
 import { getConversionAPI } from './services.js';
 import { calculateNewAmount} from './currency.js'
 
-async function getConversionRate(currencyToConv, currencyToMatch, amount) {
+async function getConversion(currencyToConv, currencyToMatch, amount) {
   let response = await getConversionAPI(currencyToConv);
   if (response === false) {
     $("#display").text("I'm sorry, it seems an error has occured!");
@@ -23,6 +23,6 @@ $(document).ready(function() {
     const currencyToMatch = $("#currency-to-match").val();
     const moneyInput = $("#convert-amount").val();
 
-    getConversionRate(currencyToConv, currencyToMatch, moneyInput);
+    getConversion(currencyToConv, currencyToMatch, moneyInput);
   });
 });
