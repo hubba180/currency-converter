@@ -6,12 +6,17 @@ import { getConversionAPI } from './services.js';
 import { calculateNewAmount} from './currency.js'
 
 async function getConversion(currencyToConv, currencyToMatch, amount) {
-  let response = await getConversionAPI(currencyToConv);
-  if (response === false) {
-    $("#display").text("I'm sorry, it seems an error has occured!");
+  if (amount > 0) {
+    let response = await getConversionAPI(currencyToConv);
+    if (response === false) {
+      $("#error").text("I'm sorry, it seems an error has occured!");
+    } else {
+      const conversionRate = response.conversion_rates[currencyToMatch];
+      $("#error").text("")
+      $("#display").text(`Conversion: ${calculateNewAmount(conversionRate, amount)} ${currencyToMatch}`);
+    }
   } else {
-    const conversionRate = response.conversion_rates[currencyToMatch];
-    $("#display").text(calculateNewAmount(conversionRate, amount));
+    $("#error").text("You must enter a positive integer!")
   }
 }
 

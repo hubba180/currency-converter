@@ -1,4 +1,6 @@
-
+#error {
+  color: red;
+}
 #output {
   display: none;
   text-align: center;
