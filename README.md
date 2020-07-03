@@ -1,25 +1,25 @@
 # _Title_
-#### _Brief Desc., Date_
+#### _Convert any currency to the equivalent in another!, 07/03/2020_
 #### By _**Kyle Hubbard**_
 ## Description
-_Enter text here_
+_Using the advantage of a conversion rate API, this program is able to convert any amount of one currency into another_
 
 ## Specifications
 
-**Behavior** _Spec_
-* Input: 
-* Output: 
-* Complete: 
+**Behavior** _The program should display the conversion rate for any choice of currency_
+* Input: US Dollar to UK Pound
+* Output: 0.80 Pounds
+* Complete: False, Red
 
-**Behavior** _Spec_
-* Input: 
-* Output: 
-* Complete:
+**Behavior** _The program should also take an amount of currency from the user and convert it into the expected conversion amount via the correct exchange rate_
+* Input: 10 US Dollars to UK Pounds
+* Output: 8 Pounds
+* Complete: Red, False
 
-**Behavior** _Spec_
-* Input: 
-* Output: 
-* Complete:
+**Behavior** _If the API call returns an error a message should be displayed to the console describing the error_
+* Input: !200 OK
+* Output: Error code 404
+* Complete: Red False
 
 **Behavior** _Spec_
 * Input: 
