@@ -3,13 +3,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import $ from 'jquery';
 import { getConversionAPI } from './services.js';
+import { calculateNewAmount} from './currency.js'
 
-async function getConversionRate(currencyToConv, currencyToMatch) {
+async function getConversionRate(currencyToConv, currencyToMatch, amount) {
   let response = await getConversionAPI(currencyToConv);
   if (response === false) {
-    return false;
+    $("#display").text("I'm sorry, it seems an error has occured!");
   } else {
-    $("#display").text(response.conversion_rates[currencyToMatch]);
+    const conversionRate = response.conversion_rates[currencyToMatch];
+    $("#display").text(calculateNewAmount(conversionRate, amount));
   }
 }
 
@@ -19,7 +21,8 @@ $(document).ready(function() {
     event.preventDefault();
     const currencyToConv = $("#currency-to-conv").val();
     const currencyToMatch = $("#currency-to-match").val();
+    const moneyInput = $("#convert-amount").val();
 
-    getConversionRate(currencyToConv, currencyToMatch);
+    getConversionRate(currencyToConv, currencyToMatch, moneyInput);
   });
 });
