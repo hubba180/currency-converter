@@ -1,7 +1,5 @@
-#form-input {
-  float: left;
-}
 
-#display {
+#output {
+  display: none;
   text-align: center;
 }

@@ -7,9 +7,9 @@ export async function getConversionAPI(currencyToConv) {
     } else {
       jsonifiedResponse = await response.json();
     }
-    console.log(jsonifiedResponse);
     return jsonifiedResponse;
   } catch(error) {
+    console.log(error);
     return false;
   }
 

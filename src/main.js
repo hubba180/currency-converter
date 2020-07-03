@@ -22,7 +22,7 @@ $(document).ready(function() {
     const currencyToConv = $("#currency-to-conv").val();
     const currencyToMatch = $("#currency-to-match").val();
     const moneyInput = $("#convert-amount").val();
-
     getConversion(currencyToConv, currencyToMatch, moneyInput);
+    $("#output").fadeIn();
   });
 });
