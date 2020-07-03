@@ -6,17 +6,36 @@ import { getConversionAPI } from './services.js';
 import { calculateNewAmount} from './currency.js'
 
 async function getConversion(currencyToConv, currencyToMatch, amount) {
-  if (amount > 0) {
-    let response = await getConversionAPI(currencyToConv);
-    if (response === false) {
-      $("#error").text("I'm sorry, it seems an error has occured!");
-    } else {
-      const conversionRate = response.conversion_rates[currencyToMatch];
+  if (amount < 0 || !currencyToConv || !currencyToMatch) {
+    if (amount < 0) {
+      $("#error").val("")
+      $("#display").text("");
+      $("#error").text("Oops! You must enter an integer greater than zero!");
+    }
+    if (!currencyToMatch && !currencyToConv) {
+      $("#error").val("")
+      $("#display").text("");
+      $("#error").text("Oops! You must enter a currency to convert to and from!");
+    } else if (!currencyToMatch) {
       $("#error").text("")
-      $("#display").text(`Conversion: ${calculateNewAmount(conversionRate, amount)} ${currencyToMatch}`);
+      $("#display").text("");
+      $("#error").text("Oops! You must enter a currency to convert to!");
+    } else if (!currencyToConv) {
+      $("#error").text("");
+      $("#display").text("");
+      $("#error").text("Oops! You must enter a currency to convert from!");
     }
   } else {
-    $("#error").text("You must enter a positive integer!")
+    let response = await getConversionAPI(currencyToConv);
+    if (response === false) {
+      $("#display").val("")
+      $("#error").text("WARNING: it seems an error has occured!");
+    } else {
+      const conversionRate = response.conversion_rates[currencyToMatch];
+      $("#display").val("");
+      $("#error").text("");
+      $("#display").text(`Conversion: ${calculateNewAmount(conversionRate, amount)} ${currencyToMatch}`);
+    }
   }
 }
 
