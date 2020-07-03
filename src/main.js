@@ -3,21 +3,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import $ from 'jquery';
 import { getConversionAPI } from './services.js';
-import { calculateNewAmount} from './currency.js'
+import { calculateNewAmount} from './currency.js';
 
 async function getConversion(currencyToConv, currencyToMatch, amount) {
   if (amount < 0 || !currencyToConv || !currencyToMatch) {
     if (amount < 0) {
-      $("#error").val("")
+      $("#error").val("");
       $("#display").text("");
       $("#error").text("Oops! You must enter an integer greater than zero!");
     }
     if (!currencyToMatch && !currencyToConv) {
-      $("#error").val("")
+      $("#error").val("");
       $("#display").text("");
       $("#error").text("Oops! You must enter a currency to convert to and from!");
     } else if (!currencyToMatch) {
-      $("#error").text("")
+      $("#error").text("");
       $("#display").text("");
       $("#error").text("Oops! You must enter a currency to convert to!");
     } else if (!currencyToConv) {
@@ -28,7 +28,7 @@ async function getConversion(currencyToConv, currencyToMatch, amount) {
   } else {
     let response = await getConversionAPI(currencyToConv);
     if (response === false) {
-      $("#display").val("")
+      $("#display").val("");
       $("#error").text("WARNING: it seems an error has occured!");
     } else {
       const conversionRate = response.conversion_rates[currencyToMatch];
